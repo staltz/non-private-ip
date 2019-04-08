@@ -17,7 +17,7 @@ var address = module.exports = function (inter, filter) {
     for(var i in inter[k]) {
       var e = inter[k][i]
       // find a reasonable looking address
-      if(!e.internal && filter(e.address, e))
+      if(!k.startsWith('rmnet') && !e.internal && filter(e.address, e))
           return e.address
     }
   }
