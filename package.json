@@ -1,11 +1,11 @@
 {
-  "name": "non-private-ip",
+  "name": "non-private-ip-android",
   "description": "see if you have a non private (i.e. public ip address)",
-  "version": "1.4.4",
-  "homepage": "https://github.com/dominictarr/non-private-ip",
+  "version": "1.4.4-1",
+  "homepage": "https://github.com/staltz/non-private-ip",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dominictarr/non-private-ip.git"
+    "url": "git://github.com/staltz/non-private-ip.git"
   },
   "dependencies": {
     "ip": "^1.1.5"
@@ -17,7 +17,10 @@
     "prepublish": "npm ls &&  npm test",
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "bin": "./bin.js",
-  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "author": "contact@staltz.com",
   "license": "MIT"
 }
