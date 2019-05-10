@@ -24,22 +24,32 @@ var address = (module.exports = function(inter, filter) {
       if (!filter(e.address, e)) continue;
 
       // Prioritize IPv4 wlan:
-      if (k.startsWith('wl') && e.family === 'IPv4' && score < 6) {
-        score = 6;
+      if (k.startsWith('wl') && e.family === 'IPv4' && score < 8) {
+        score = 8;
         candidate = e.address;
       }
       // Prioritize IPv4 ethernet:
-      else if (k.startsWith('en') && e.family === 'IPv4' && score < 5) {
-        score = 5;
+      else if (k.startsWith('en') && e.family === 'IPv4' && score < 7) {
+        score = 7;
+        candidate = e.address;
+      }
+      // Prioritize IPv4 OLD ethernet:
+      else if (k.startsWith('eth') && e.family === 'IPv4' && score < 6) {
+        score = 6;
         candidate = e.address;
       }
       // Prioritize wlan:
-      else if (k.startsWith('wl') && score < 4) {
-        score = 4;
+      else if (k.startsWith('wl') && score < 5) {
+        score = 5;
         candidate = e.address;
       }
       // Prioritize ethernet:
-      else if (k.startsWith('en') && score < 3) {
+      else if (k.startsWith('en') && score < 4) {
+        score = 4;
+        candidate = e.address;
+      }
+      // Prioritize OLD ethernet:
+      else if (k.startsWith('eth') && score < 3) {
         score = 3;
         candidate = e.address;
       }
@@ -49,7 +59,7 @@ var address = (module.exports = function(inter, filter) {
         candidate = e.address;
       }
       // Prioritize tunnels (VPN):
-      else if (k.startsWith('tun') && e.family === 'IPv4' && score < 1) {
+      else if (k.startsWith('tun') && score < 1) {
         score = 1;
         candidate = e.address;
       }
